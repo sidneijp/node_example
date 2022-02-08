@@ -19,6 +19,7 @@ interface Pessoa {
     id?: number;
     nome: string;
     idade: number;
+    
 }
 
 Object.prototype.isEmpty = function(): boolean {

@@ -1,0 +1,34 @@
+    *Em qual porta a aplicação está executando?
+
+    porta 3000 "no meu localhost"
+    const port = process.env.PORT || 3000
+
+    *O que a aplicação faz?
+
+    Cadastra e remove pessoas, com os campos de nome e idade
+
+    *Quais as rotas da aplicação?
+    
+    routes.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`))
+    routes.get("/hello", controllers.hello)
+    routes.get("/pessoas", controllers.getPessoas)
+    routes.post("/pessoas", controllers.createPessoa)
+    routes.delete("/pessoas/:id", controllers.deletePessoa)
+    routes.get("/pessoas/:id", controllers.getPessoa)
+    routes.put("/pessoas/:id", controllers.updatePessoa)
+
+    *Qual framework web está sendo utilizado no backend?
+
+    Express
+
+    *Qual engine template está sendo utilizada?
+
+    Pug/Jade
+
+    *Qual DBMS está sendo utilizado?
+
+    Esta sendo usado o Sequelize-sqlite
+
+    *Qual o formato do conteúdo do body das resposta relacionadas às rotas de Pessoa?
+   
+    Lista

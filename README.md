@@ -55,7 +55,7 @@ Faça um **fork** deste repositório no GitHub para responder as perguntas e rea
 
 1. Crie um **vhost** no apache2 e o configure como **reverse proxy** de forma que possa acessar sua aplicação node com o hostname "example.com" na porta 80 (sem mudar o hostname e porta no node) através do apache
 2. Sirva os **arquivos estáticos** (imagens, css e js) com o apache ao invés da aplicações node
-3. Crie uma conta no serviço de **PaaS** chamado **Heroku** e faça essa aplicação node executar em um **Dyno** gratuito
+3. Crie uma conta no serviço de **PaaS** chamado **Heroku** e faça essa aplicação node executar e **Dyno** gratuito
 4. Add um novo campo chamado `vacinado` do tipo **boolean** ao modelo `Pessoa` com **default** `FALSE`
 5. Atualize as **controllers** que lidam com a **entidade** `Pessoa` para ler/escrever no campo "vacinado" criado
 6. Modifique o frontend para lidar com o campo `vacinado`

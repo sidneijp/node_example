@@ -43,13 +43,13 @@ Faça um **fork** deste repositório no GitHub para responder as perguntas e rea
 
 ## Perguntas:
 
-- Em qual porta a aplicação está executando?
-- O que a aplicação faz?
-- Quais as **rotas** da aplicação?
-- Qual **framework web** está sendo utilizado no backend?
-- Qual **engine template** está sendo utilizada?
-- Qual **DBMS** está sendo utilizado?
-- Qual o formato do conteúdo do body das resposta relacionadas às rotas de Pessoa?
+- Em qual porta a aplicação está executando? 3000
+- O que a aplicação faz? Mostra um formulario em que o usuário entra nome e idade. As informacoes ficam salvam numa database SQLite.
+- Quais as **rotas** da aplicação? "/", "/pessoas", "/hello","/pessoas/:id"
+- Qual **framework web** está sendo utilizado no backend? ExpressJS
+- Qual **engine template** está sendo utilizada? Pug
+- Qual **DBMS** está sendo utilizado? Sequelize
+- Qual o formato do conteúdo do body das respostas relacionadas às rotas de Pessoa? json
 
 ## Desafios:
 

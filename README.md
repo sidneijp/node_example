@@ -44,12 +44,15 @@ Faça um **fork** deste repositório no GitHub para responder as perguntas e rea
 ## Perguntas:
 
 - Em qual porta a aplicação está executando?
+    
     R -> http://localhost:3000
 
 - O que a aplicação faz?
+    
     R -> Faz o cadastro do nome e idade de uma pessoa, gerando uma API
 
 - Quais as **rotas** da aplicação?
+    
     R -> routes.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`))
          routes.get("/hello", controllers.hello)
          routes.get("/pessoas", controllers.getPessoas)
@@ -59,15 +62,19 @@ Faça um **fork** deste repositório no GitHub para responder as perguntas e rea
          routes.put("/pessoas/:id", controllers.updatePessoa)
 
 - Qual **framework web** está sendo utilizado no backend?
+    
     R -> Express
 
 - Qual **engine template** está sendo utilizada?
+   
     R -> Pug
 
 - Qual **DBMS** está sendo utilizado?
+    
     R -> SQLite
 
 - Qual o formato do conteúdo do body das resposta relacionadas às rotas de Pessoa?
+   
     R -> JSON
 
 ## Desafios:

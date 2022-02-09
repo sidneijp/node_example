@@ -43,7 +43,7 @@ Faça um **fork** deste repositório no GitHub para responder as perguntas e rea
 
 ## Perguntas:
 
-- Em qual porta a aplicação está executando?
+- Em qual porta a aplicação está executando? 3000
 - O que a aplicação faz?
 - Quais as **rotas** da aplicação?
 - Qual **framework web** está sendo utilizado no backend?

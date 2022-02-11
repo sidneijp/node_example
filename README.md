@@ -55,7 +55,7 @@ Faça um **fork** deste repositório no GitHub para responder as perguntas e rea
 - Qual **framework web** está sendo utilizado no backend?  next
 - Qual **engine template** está sendo utilizada? pub
 - Qual **DBMS** está sendo utilizado? sqlite
-- Qual o formato do conteúdo do body das resposta relacionadas às rotas de Pessoa? não sei
+- Qual o formato do conteúdo do body das resposta relacionadas às rotas de Pessoa? json
 
 ## Desafios:
 

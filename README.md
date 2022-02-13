@@ -43,13 +43,19 @@ Faça um **fork** deste repositório no GitHub para responder as perguntas e rea
 
 ## Perguntas:
 
-- Em qual porta a aplicação está executando?
-- O que a aplicação faz?
-- Quais as **rotas** da aplicação?
-- Qual **framework web** está sendo utilizado no backend?
-- Qual **engine template** está sendo utilizada?
-- Qual **DBMS** está sendo utilizado?
-- Qual o formato do conteúdo do body das resposta relacionadas às rotas de Pessoa?
+- Em qual porta a aplicação está executando? - 3000
+- O que a aplicação faz? - cadostro de nome e idade /  delata cadastro
+- Quais as **rotas** da aplicação? - routes.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`))
+                                                routes.get("/hello", controllers.hello)
+                                                routes.get("/pessoas", controllers.getPessoas)
+                                                routes.post("/pessoas", controllers.createPessoa)
+                                                routes.delete("/pessoas/:id", controllers.deletePessoa)
+                                                routes.get("/pessoas/:id", controllers.getPessoa)
+                                                routes.put("/pessoas/:id", controllers.updatePessoa)
+- Qual **framework web** está sendo utilizado no backend?  next
+- Qual **engine template** está sendo utilizada? pub
+- Qual **DBMS** está sendo utilizado? sqlite
+- Qual o formato do conteúdo do body das resposta relacionadas às rotas de Pessoa? json
 
 ## Desafios:
 

@@ -11,12 +11,23 @@
 <body>
     <form class="form-pessoa">
         <div class="form-control mb-2">
+
             <label class="form-label" for="nomeInput">Nome:</label>
             <input class="form-control" type="text" name="nome" id="nomeInput">
+
             <br/>
+
             <label class="form-label" for="idadeInput">Idade:</label>
             <input class="form-control" type="text" name="idade" id="idadeInput">
+
             <br/>
+
+            <label class="form-label" for="vacinadoInput">Vacinado(a):</label>
+            <input type="radio" value="true" name="vacinado" id="vacinado">Sim</input>
+            <input type="radio" value="false" name="vacinado" id="naoVacinado">Nao</input>
+           
+            <br/>
+
             <input class="btn btn-primary form-control" type="submit" value="Adicionar Pessoa">
             <ul class="lista-pessoas list-group list-group-flush">
                 

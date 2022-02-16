@@ -36,7 +36,7 @@ async function createPessoa(pessoa) {
         return (await response.json());
     }
     catch (TypeError) {
-        alert("Não foi possível se conectar com o servidor");
+        alert(`Não foi possível se conectar com o servidor, ${TypeError}`);
         return {};
     }
 }
@@ -96,6 +96,7 @@ if (form) {
         }
     });
 }
+
 window.onload = async function (event) {
     let response_payload = await getPessoas();
     if (!response_payload.pessoas.length)

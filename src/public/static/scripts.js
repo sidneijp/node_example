@@ -60,7 +60,7 @@ function prependPessoaListItem(pessoa) {
     if (!ul)
         return;
     let li = document.createElement('li');
-    li.innerText = `${capitalize(pessoa.nome)} tem ${pessoa.idade} ano(s)`;
+    li.innerText = `${capitalize(pessoa.nome)} tem ${pessoa.idade} ano(s) e ${!pessoa.vacinado ? 'nao' : ''} é vacinado(a)`;
     li.classList.add('list-group-item');
     let delete_btn = document.createElement('a');
     delete_btn.classList.add('float-end', 'btn', 'btn-danger');

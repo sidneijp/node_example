@@ -18,3 +18,7 @@ db.sync(() => console.log(`Banco de dados conectado`));
 app.listen(port, () => {
   console.log(`JSON example app listening at http://localhost:${port}`)
 })
+/* 
+app.listen(port, () => {
+  console.log(`JSON example app listening at http://www.example.com:${port}`)
+}) */

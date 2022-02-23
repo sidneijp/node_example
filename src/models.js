@@ -16,7 +16,11 @@ const Pessoa = db.define("pessoa", {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
+  vacinado: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+  },
   timestamps: false,
 });
-
+ 
 export {Pessoa}

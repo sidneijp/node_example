@@ -43,21 +43,44 @@ Faça um **fork** deste repositório no GitHub para responder as perguntas e rea
 
 ## Perguntas:
 
-- Em qual porta a aplicação está executando?
-- O que a aplicação faz?
-- Quais as **rotas** da aplicação?
-- Qual **framework web** está sendo utilizado no backend?
-- Qual **engine template** está sendo utilizada?
-- Qual **DBMS** está sendo utilizado?
+- Em qual porta a aplicação está executando?  
+RESPOSTA: Na porta 3000.
+
+- O que a aplicação faz?  
+RESPOSTA: Cria listagem de Pessoas, onde cada pessoa tem Nome, Idade e se esta vacinado.  
+
+- Quais as **rotas** da aplicação?<br>
+RESPOSTA: Temos a rota inicial /, a rota /hello que só é chamada diretamente no URL,   
+também temos a rota /pessoas com GET para renderizar a listagem de Pessoas,   
+a rota /pessoas que recebe o método POST para criar Pessoa,  
+a rota /pessoas/:id com método DELETE,  
+e a rota/pessoas/:id com método PUT que Substitui a lista e atualiza. 
+
+- Qual **framework web** está sendo utilizado no backend?   
+ RESPOSTA: EXPRESS.js é o que o nosso backend utiliza de framework web.  
+
+- Qual **engine template** está sendo utilizada?  
+ RESPOSTA: PUG é o Engine Template utilizado.  
+
+- Qual **DBMS** está sendo utilizado?  <br>
+RESPOSTA: SQlite.  
 - Qual o formato do conteúdo do body das resposta relacionadas às rotas de Pessoa?
+RESPOSTA: JSON.
 
 ## Desafios:
 
-1. Crie um **vhost** no apache2 e o configure como **reverse proxy** de forma que possa acessar sua aplicação node com o hostname "example.com" na porta 80 (sem mudar o hostname e porta no node) através do apache
-2. Sirva os **arquivos estáticos** (imagens, css e js) com o apache ao invés da aplicações node
-3. Crie uma conta no serviço de **PaaS** chamado **Heroku** e faça essa aplicação node executar em um **Dyno** gratuito
-4. Add um novo campo chamado `vacinado` do tipo **boolean** ao modelo `Pessoa` com **default** `FALSE`
-5. Atualize as **controllers** que lidam com a **entidade** `Pessoa` para ler/escrever no campo "vacinado" criado
-6. Modifique o frontend para lidar com o campo `vacinado`
+1. Crie um **vhost** no apache2 e o configure como **reverse proxy** de forma que possa acessar sua aplicação node com o hostname "example.com" na porta 80 (sem mudar o hostname e porta no node) através do apache :thumbsup:
 
-P.S.: add o arquivo ".conf" do apache que você escreveu ao seu repositório git.
+2. Sirva os **arquivos estáticos** (imagens, css e js) com o apache ao invés da aplicações node. :confused:
+
+3. Crie uma conta no serviço de **PaaS** chamado **Heroku** e faça essa aplicação node executar em um **Dyno** gratuito :thumbsup:
+<br>
+RESPOSTA: https://node-example-uli.herokuapp.com/  
+
+4. Add um novo campo chamado `vacinado` do tipo **boolean** ao modelo `Pessoa` com **default** `FALSE`. :thumbsup::confused:
+
+5. Atualize as **controllers** que lidam com a **entidade** `Pessoa` para ler/escrever no campo "vacinado" criado. :thumbsup:
+
+6. Modifique o frontend para lidar com o campo `vacinado`. :thumbsup:
+
+P.S.: add o arquivo ".conf" do apache que você escreveu ao seu repositório git. :thumbsup:

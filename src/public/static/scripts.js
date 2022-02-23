@@ -36,7 +36,7 @@ async function createPessoa(pessoa) {
         return (await response.json());
     }
     catch (TypeError) {
-        alert("Não foi possível se conectar com o servidor");
+        alert(`Não foi possível se conectar com o servidor, ${TypeError}`);
         return {};
     }
 }
@@ -60,7 +60,7 @@ function prependPessoaListItem(pessoa) {
     if (!ul)
         return;
     let li = document.createElement('li');
-    li.innerText = `${capitalize(pessoa.nome)} tem ${pessoa.idade} ano(s)`;
+    li.innerText = `${capitalize(pessoa.nome)} tem ${pessoa.idade} ano(s) e ${!pessoa.vacinado ? 'nao' : ''} é vacinado(a)`;
     li.classList.add('list-group-item');
     let delete_btn = document.createElement('a');
     delete_btn.classList.add('float-end', 'btn', 'btn-danger');
@@ -96,6 +96,7 @@ if (form) {
         }
     });
 }
+
 window.onload = async function (event) {
     let response_payload = await getPessoas();
     if (!response_payload.pessoas.length)

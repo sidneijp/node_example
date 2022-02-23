@@ -11,6 +11,7 @@ async function getPessoas(req, res) {
 }
 
 async function createPessoa(req, res) {
+
     let nome = req.body.nome.trim().toLowerCase()
     if (!nome) {
         res.status(400)
@@ -21,6 +22,11 @@ async function createPessoa(req, res) {
         res.status(400)
         return res.json({ detail: "'idade' é obrigatório e deve ser um número inteiro" })
     }
+    let vacinado = req.body.vacinado
+    if (vacinado == undefined) {
+        res.status(400)
+        return res.json({ detail: "o campo 'vacinado(a)' é obrigatório" })
+    }
     let pessoa = await Pessoa.findOne({where: {nome: nome}})
     if (pessoa) {
         res.status(400)
@@ -29,6 +35,7 @@ async function createPessoa(req, res) {
     pessoa = await Pessoa.create({
         nome: nome,
         idade: idade,
+        vacinado: vacinado,
     })
     res.status(201)
     res.json({ pessoa })
@@ -70,10 +77,16 @@ async function updatePessoa(req, res) {
         res.status(400)
         return res.json({ detail: "'idade' é obrigatório e deve ser um número inteiro" })
     }
+    let vacinado = req.body.vacinado
+    if (req.body.vacinado == '') {
+        res.status(400)
+        return res.json({ detail: "o campo 'vacinado(a)' é obrigatório" })
+    }
     pessoa = await Pessoa.update({
         id: req.params.id,
         nome: nome,
         idade: idade,
+        vacinado: vacinado,
     })
     res.json({pessoa})
 }

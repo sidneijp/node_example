@@ -22,6 +22,10 @@ async function createPessoa(req, res) {
         return res.json({ detail: "'idade' é obrigatório e deve ser um número inteiro" })
     } 
     let vacinado = req.body.vacinado;
+    if (vacinado == undefined) {
+        res.status(400)
+        return res.json ({ detail: "Vacina já seu negacionista, a terra é plana por acaso?"})
+    }
     let pessoa = await Pessoa.findOne({where: {nome: nome}})
     if (pessoa) {
         res.status(400)
@@ -73,6 +77,10 @@ async function updatePessoa(req, res) {
         return res.json({ detail: "'idade' é obrigatório e deve ser um número inteiro" })
     }
     let vacinado = req.body.vacinado;
+    if (vacinado == undefined) {
+        res.status(400)
+        return res.json ({ detail: "Vacina já seu negacionista, a terra é plana por acaso?"})
+    }
     pessoa = await Pessoa.update({
         id: req.params.id,
         nome: nome,

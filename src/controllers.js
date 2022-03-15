@@ -1,5 +1,6 @@
 import { response } from "express"
 import {Pessoa} from "./models.js"
+import crypto from "crypto"
 
 async function hello(req, res) {
     res.render('hello', { title: 'Hello World', message: 'Olá mundo' })
@@ -21,7 +22,23 @@ async function createPessoa(req, res) {
         res.status(400)
         return res.json({ detail: "'idade' é obrigatório e deve ser um número inteiro" })
     }
-    let pessoa = await Pessoa.findOne({where: {nome: nome}})
+
+    let email = req.body.email
+    if (!email) {
+        res.status(400)
+        return res.json({ detail: "'email' é obrigatório" })
+    }
+    let senha = req.body.senha
+    if (!senha) {
+        res.status(400)
+        return res.json({ detail: "'senha' é obrigatório" })
+    }
+    let salt = crypto.randomBytes(16).toString('hex');
+    let senhaCriptografada = crypto.pbkdf2Sync(
+        senha, salt, 1000, 64, 'sha512'
+    ).toString('hex');
+
+    let pessoa = await Pessoa.findOne({where: {email: email}})
     if (pessoa) {
         res.status(400)
         return res.json({ detail: "Já existe pessoa com este nome" })
@@ -29,6 +46,9 @@ async function createPessoa(req, res) {
     pessoa = await Pessoa.create({
         nome: nome,
         idade: idade,
+        email: email,
+        salt: salt,
+        senhaCriptografada: senhaCriptografada,
     })
     res.status(201)
     res.json({ pessoa })

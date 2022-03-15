@@ -16,6 +16,7 @@ const Pessoa = db.define("pessoa", {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
+}, {
   timestamps: false,
 });
 

@@ -1,19 +1,11 @@
 import { Sequelize } from 'sequelize'
-import db from "./db.js"
+import db from "../db.js"
 
-const Pessoa = db.define("pessoa", {
+const User = db.define("usuarios", {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true,
-    allowNull: false,
-  },
-  nome: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  idade: {
-    type: Sequelize.INTEGER,
     allowNull: false,
   },
   email: {
@@ -39,4 +31,4 @@ const Pessoa = db.define("pessoa", {
   timestamps: false,
 });
 
-export {Pessoa}
+export {User}

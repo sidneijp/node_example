@@ -6,6 +6,7 @@ import __dirname from "./get_path.js"
 const routes = express.Router()
 
 routes.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`))
+
 routes.get("/hello", controllers.hello)
 routes.get("/pessoas", controllers.getPessoas)
 routes.post("/pessoas", controllers.createPessoa)

@@ -2,6 +2,25 @@ import { response } from "express"
 import {Pessoa} from "./models.js"
 import crypto from "crypto"
 
+async function login(req, res) {
+    let email = req.body.email;
+    let senha = req.body.senha;
+    console.log(email, senha);
+    let pessoa = await Pessoa.findOne({
+        where: {email: email}
+    })
+
+    if (!pessoa) {
+        res.status(404);
+        return res.json({ detail: "email não cadastrado" })
+    }
+
+    let senhaCriptografada = crypto.pbkdf2Sync(senha, pessoa.salt, 1000, 64, 'sha512');
+    console.log('eae, rolou?')
+    console.log(pessoa.senhaCriptografada == senhaCriptografada);
+    res.end();
+}
+
 async function hello(req, res) {
     res.render('hello', { title: 'Hello World', message: 'Olá mundo' })
 }
@@ -98,4 +117,4 @@ async function updatePessoa(req, res) {
     res.json({pessoa})
 }
 
-export default { hello, getPessoas, createPessoa, deletePessoa, getPessoa, updatePessoa }
+export default { login, hello, getPessoas, createPessoa, deletePessoa, getPessoa, updatePessoa }

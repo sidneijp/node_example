@@ -9,9 +9,9 @@ const capitalize = function (text) {
     return text.trim().toLowerCase().replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
 };
 const apiUrl = ''; //'http://localhost:3000';
-async function getPessoas() {
+async function getUsuarios() {
     try {
-        let response = await fetch(`${apiUrl}/pessoas`, {
+        let response = await fetch(`${apiUrl}/usuarios`, {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
@@ -21,17 +21,17 @@ async function getPessoas() {
     }
     catch (TypeError) {
         alert("Não foi possível se conectar com o servidor");
-        return { "pessoas": [] };
+        return { "usuarios": [] };
     }
 }
-async function login(pessoa) {
+async function createUsuario(usuario) {
     try {
-        let response = await fetch(`${apiUrl}/login`, {
+        let response = await fetch(`${apiUrl}/usuarios`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(pessoa)
+            body: JSON.stringify(usuario)
         });
         return (await response.json());
     }
@@ -40,25 +40,9 @@ async function login(pessoa) {
         return {};
     }
 }
-async function createPessoa(pessoa) {
+async function deleteUsuario(usuario_id) {
     try {
-        let response = await fetch(`${apiUrl}/pessoas`, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(pessoa)
-        });
-        return (await response.json());
-    }
-    catch (TypeError) {
-        alert("Não foi possível se conectar com o servidor");
-        return {};
-    }
-}
-async function deletePessoa(pessoa_id) {
-    try {
-        let response = await fetch(`${apiUrl}/pessoas/${pessoa_id}`, {
+        let response = await fetch(`${apiUrl}/usuarios/${usuario_id}`, {
             method: 'DELETE',
             headers: {
                 "Content-Type": "application/json",
@@ -71,21 +55,21 @@ async function deletePessoa(pessoa_id) {
         return true;
     }
 }
-function prependPessoaListItem(pessoa) {
-    let ul = document.querySelector(".lista-pessoas");
+function prependUsuarioListItem(usuario) {
+    let ul = document.querySelector(".lista-usuarios");
     if (!ul)
         return;
     let li = document.createElement('li');
-    li.innerText = `${capitalize(pessoa.nome)} tem ${pessoa.idade} ano(s)`;
+    li.innerText = `${capitalize(usuario.nome)} tem ${usuario.idade} ano(s)`;
     li.classList.add('list-group-item');
     let delete_btn = document.createElement('a');
     delete_btn.classList.add('float-end', 'btn', 'btn-danger');
     delete_btn.innerText = 'remover';
-    delete_btn.setAttribute('data-pessoa-id', String(pessoa.id));
+    delete_btn.setAttribute('data-usuario-id', String(usuario.id));
     delete_btn.addEventListener('click', async function (event) {
         event.preventDefault();
-        let pessoa_id = Number.parseInt(delete_btn.getAttribute('data-pessoa-id'));
-        let deleted = await deletePessoa(pessoa_id);
+        let usuario_id = Number.parseInt(delete_btn.getAttribute('data-usuario-id'));
+        let deleted = await deleteUsuario(usuario_id);
         if (deleted) {
             let parent_li = this.parentElement;
             if (parent_li) {
@@ -96,16 +80,16 @@ function prependPessoaListItem(pessoa) {
     li.append(delete_btn);
     ul.prepend(li);
 }
-let form = document.querySelector(".form-pessoa");
+let form = document.querySelector(".form-usuario");
 if (form) {
     form.addEventListener('submit', async function (event) {
         event.preventDefault();
         let formData = new FormData(this);
         let data = objectFromFormData(formData);
-        let response_payload = await login(data);
-        if ("pessoa" in response_payload) {
-            let pessoa = response_payload.pessoa;
-            prependPessoaListItem(pessoa);
+        let response_payload = await createUsuario(data);
+        if ("usuario" in response_payload) {
+            let usuario = response_payload.usuario;
+            prependUsuarioListItem(usuario);
         }
         else if ("detail" in response_payload) {
             alert(response_payload.detail);
@@ -113,11 +97,11 @@ if (form) {
     });
 }
 window.onload = async function (event) {
-    let response_payload = await getPessoas();
-    if (!response_payload.pessoas.length)
+    let response_payload = await getUsuarios();
+    if (!response_payload.usuarios.length)
         return;
-    let pessoas = response_payload.pessoas;
-    for (let pessoa of pessoas) {
-        prependPessoaListItem(pessoa);
+    let usuarios = response_payload.usuarios;
+    for (let usuario of usuarios) {
+        prependUsuarioListItem(usuario);
     }
 };

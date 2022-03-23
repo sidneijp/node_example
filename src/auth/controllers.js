@@ -77,6 +77,28 @@ async function process_login(req, res) {
     return res.redirect('/login')
 }
 
+async function change_password(req, res) {
+    res.render('change_password')
+}
+
+async function process_change_password(req, res) {
+    let { senha_antiga, senha_nova} = req.body
+    const { userId } = req.session
+    let user = await User.findOne({where: {id: userId}})
+    if (user) {
+        let senha_antiga_criptografada = crypto.pbkdf2Sync(senha_antiga, user.salt, 1000, 64, 'sha512').toString('hex')
+        if (senha_antiga_criptografada === user.senhaCriptografada) {
+            user.senhaCriptografada = crypto.pbkdf2Sync(senha_nova, user.salt, 1000, 64, 'sha512').toString('hex')
+            user.save()
+            return req.session.destroy(err => {
+                res.clearCookie('session_id')
+                res.redirect('/login')
+            })
+        }
+    }
+    res.redirect('/change-password')
+}
+
 async function show_profile(req, res) {
     const { userId } = req.session
     console.log('userId', userId)
@@ -95,4 +117,8 @@ async function logout(req, res) {
     })
 }
 
-export default { show_register, process_register, show_login, process_login, show_profile, logout, already_authenticated_handler, not_authenticated_handler }
+export default {
+    show_register, process_register, show_login, process_login, show_profile, logout,
+    change_password, process_change_password,
+    already_authenticated_handler, not_authenticated_handler
+}

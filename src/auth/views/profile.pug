@@ -6,6 +6,7 @@ html
     link(href="static/styles.css" type="text/css" rel="stylesheet")
   body
     p=user.email
+    a(href="/change-password")="Trocar Senha"
     form(class="form-pessoa" method="POST" action='/logout')
         div(class="form-control mb-2")
           input(class="btn btn-primary form-control" type="submit" value="Logout")

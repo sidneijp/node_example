@@ -6,9 +6,11 @@ RUN apt install -y build-essential libsqlite3-dev
 
 WORKDIR /app
 
-COPY package.json package-lock.json . .
+COPY package.json package-lock.json .
 
 RUN npm install
+
+COPY . .
 
 #ENTRYPOINT ["npm"]
 

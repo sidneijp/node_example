@@ -1,8 +1,17 @@
 version: "3.9"
 services:
-  web:
-    build: .
-    ports:
-      - "5000:3000"
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: sidneijp/node_example:latest
     volumes:
       - ./src/:/app/src
+  db:
+    image: postgres:12.9
+    environment:
+      - POSTGRES_DB=node_example
+      - POSTGRES_PASSWORD=teste
+      - POSTGRES_USER=node_example_user
+    volumes:
+      - ./docker/db:/var/lib/postgresql/data

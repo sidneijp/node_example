@@ -7,7 +7,7 @@ const routes = express.Router()
 
 routes.get("/", (req, res) => res.sendFile(`${__dirname}/public/index.html`))
 
-routes.get("/hello", controllers.hello)
+routes.get("/ola", controllers.hello)
 routes.get("/pessoas", controllers.getPessoas)
 routes.post("/pessoas", controllers.createPessoa)
 routes.delete("/pessoas/:id", controllers.deletePessoa)

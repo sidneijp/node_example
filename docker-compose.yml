@@ -5,6 +5,8 @@ services:
       context: .
       dockerfile: ./Dockerfile
     image: sidneijp/node_example:latest
+    ports:
+      - 4000:3000
     volumes:
       - ./src/:/app/src
   db:
